@@ -1,0 +1,1147 @@
+
+            <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beads & Bracelets - Custom Jewelry</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #8e6c88;
+            --secondary: #e6c4e0;
+            --accent: #5d3954;
+            --light: #f9f4f8;
+            --dark: #3d2837;
+        }
+
+        body {
+            background-color: #fcf9fb;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .logo i {
+            font-size: 1.5rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            background-color: #d8aad0;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        .cart-btn {
+            position: relative;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.3rem;
+            cursor: pointer;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--secondary);
+            color: var(--dark);
+            font-size: 0.7rem;
+            font-weight: bold;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(61, 40, 55, 0.8), rgba(93, 57, 84, 0.9)), url('https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?ixlib=rb-4.0.3') no-repeat center center/cover;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 2rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin: 3rem 0 2rem;
+            color: var(--dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+            margin: 0.5rem auto;
+            border-radius: 2px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .product-img {
+            height: 250px;
+            width: 100%;
+            object-fit: cover;
+            border-bottom: 3px solid var(--secondary);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .product-description {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            min-height: 60px;
+        }
+
+        .product-price {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .customize-section {
+            background-color: var(--light);
+            padding: 4rem 0;
+            margin: 4rem 0;
+        }
+
+        .customize-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .customize-options {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .customize-preview {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .bracelet-preview {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, var(--light), white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bracelet-design {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: conic-gradient(
+                #ff6b6b 0deg 40deg,
+                #4ecdc4 40deg 100deg,
+                #ffe66d 100deg 180deg,
+                #1a535c 180deg 260deg,
+                #ff6b6b 260deg 360deg
+            );
+            position: relative;
+        }
+
+        .option-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .option-group h4 {
+            margin-bottom: 0.8rem;
+            color: var(--dark);
+        }
+
+        .bead-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .bead-option {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: transform 0.2s ease;
+        }
+
+        .bead-option:hover {
+            transform: scale(1.1);
+        }
+
+        .bead-option.selected {
+            border-color: var(--accent);
+            transform: scale(1.1);
+        }
+
+        .color-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .color-option {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: transform 0.2s ease;
+        }
+
+        .color-option:hover {
+            transform: scale(1.1);
+        }
+
+        .color-option.selected {
+            border-color: var(--accent);
+            transform: scale(1.1);
+        }
+
+        .size-options {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .size-option {
+            padding: 0.5rem 1.2rem;
+            background-color: white;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .size-option.selected {
+            border-color: var(--primary);
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+
+        .add-to-cart-custom {
+            background-color: var(--primary);
+            color: white;
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+
+        .add-to-cart-custom:hover {
+            background-color: var(--accent);
+        }
+
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--dark);
+        }
+
+        .author-info h4 {
+            color: var(--dark);
+        }
+
+        .author-info p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 380px;
+            height: 100vh;
+            background-color: white;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: right 0.4s ease;
+            padding: 1.5rem;
+            overflow-y: auto;
+        }
+
+        .cart-modal.active {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--light);
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #777;
+        }
+
+        .cart-items {
+            margin-bottom: 2rem;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid var(--light);
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .cart-item-price {
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .quantity-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 1px solid #ddd;
+            background: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quantity-input {
+            width: 40px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 0.2rem;
+        }
+
+        .remove-item {
+            background: none;
+            border: none;
+            color: #ff6b6b;
+            cursor: pointer;
+            margin-left: auto;
+        }
+
+        .cart-total {
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-align: right;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .checkout-btn {
+            background-color: var(--primary);
+            color: white;
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .checkout-btn:hover {
+            background-color: var(--accent);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 999;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 5%;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+           
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+           
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+           
+            .cart-modal {
+                width: 100%;
+                right: -100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-gem"></i>
+                <h1>GB`s Beads & Bracelets Market</h1>
+            </div>
+           
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">Customize</a></li>
+                    <li><a href="#">Collections</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+           
+            <div class="header-actions">
+                <button class="btn btn-outline"><i class="fas fa-user"></i> Sign In</button>
+                <button class="cart-btn" id="cartButton">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">3</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Create Your Unique Handmade Jewellery</h2>
+            <p>Discover our collection of beautiful beads and create custom bracelets that express your personal style</p>
+            <button class="btn btn-primary"><i class="fas fa-wand-magic-sparkles"></i> Design Your Bracelet</button>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <div class="container">
+        <h2 class="section-title">Featured Products</h2>
+        <div class="products">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1591369822091-8b8a2a6b8b0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Gemstone Bead Set" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-title">Gemstone Bead Collection</h3>
+                    <p class="product-description">Set of 50 high-quality gemstone beads in various colors and shapes</p>
+                    <div class="product-price">GHC324.99</div>
+                    <button class="btn btn-primary add-to-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+            </div>
+           
+            <!-- Product 2 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Glass Bead Set" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-title">Glass Bead Assortment</h3>
+                    <p class="product-description">200 colorful glass beads with different patterns and finishes</p>
+                    <div class="product-price">GHC219.99</div>
+                    <button class="btn btn-primary add-to-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+            </div>
+           
+            <!-- Product 3 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Wooden Bead Set" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-title">Wooden Bead Set</h3>
+                    <p class="product-description">Eco-friendly wooden beads in natural tones, 100 pieces</p>
+                    <div class="product-price">GHC316.99</div>
+                    <button class="btn btn-primary add-to-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+            </div>
+           
+            <!-- Product 4 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Premium Bracelet Kit" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-title">Premium Bracelet Kit</h3>
+                    <p class="product-description">Complete kit to create 5 bracelets with beads, threads and tools</p>
+                    <div class="product-price">GHC234.99</div>
+                    <button class="btn btn-primary add-to-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Customize Section -->
+    <section class="customize-section">
+        <div class="container">
+            <h2 class="section-title">Customize Your Bracelet</h2>
+            <div class="customize-container">
+                <div class="customize-options">
+                    <div class="option-group">
+                        <h4>Select Bead Types</h4>
+                        <div class="bead-options">
+                            <div class="bead-option selected" style="background-color: #ff6b6b;" title="Red Agate"></div>
+                            <div class="bead-option" style="background-color: #4ecdc4;" title="Turquoise"></div>
+                            <div class="bead-option" style="background-color: #ffe66d;" title="Yellow Jade"></div>
+                            <div class="bead-option" style="background-color: #1a535c;" title="Dark Blue"></div>
+                            <div class="bead-option" style="background-color: #ff9f1c;" title="Amber"></div>
+                            <div class="bead-option" style="background-color: #6a0572;" title="Amethyst"></div>
+                        </div>
+                    </div>
+                   
+                    <div class="option-group">
+                        <h4>Choose Thread Color</h4>
+                        <div class="color-options">
+                            <div class="color-option selected" style="background-color: #000;"></div>
+                            <div class="color-option" style="background-color: #fff; border: 1px solid #ddd;"></div>
+                            <div class="color-option" style="background-color: #8e6c88;"></div>
+                            <div class="color-option" style="background-color: #3d2837;"></div>
+                            <div class="color-option" style="background-color: #ff6b6b;"></div>
+                            <div class="color-option" style="background-color: #4ecdc4;"></div>
+                        </div>
+                    </div>
+                   
+                    <div class="option-group">
+                        <h4>Bracelet Size</h4>
+                        <div class="size-options">
+                            <div class="size-option selected">Small (6")</div>
+                            <div class="size-option">Medium (7")</div>
+                            <div class="size-option">Large (8")</div>
+                        </div>
+                    </div>
+                   
+                    <div class="option-group">
+                        <h4>Add Charm (GHC42.99 each)</h4>
+                        <div class="bead-options">
+                            <div class="bead-option" style="background-color: #ffd700; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-star" style="color: #000; font-size: 0.8rem;"></i>
+                            </div>
+                            <div class="bead-option" style="background-color: #c0c0c0; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-heart" style="color: #000; font-size: 0.8rem;"></i>
+                            </div>
+                            <div class="bead-option" style="background-color: #cd7f32; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-moon" style="color: #000; font-size: 0.8rem;"></i>
+                            </div>
+                            <div class="bead-option" style="background-color: #fff; border: 1px solid #ddd; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-sun" style="color: #ff9f1c; font-size: 0.8rem;"></i>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <button class="btn add-to-cart-custom"><i class="fas fa-cart-plus"></i> Add Custom Bracelet to Cart - $29.99</button>
+                </div>
+               
+                <div class="customize-preview">
+                    <div class="bracelet-preview">
+                        <div class="bracelet-design"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <div class="container">
+        <h2 class="section-title">Customer Reviews</h2>
+        <div class="testimonials">
+            <div class="testimonial">
+                <p class="testimonial-text">"The quality of beads is exceptional! I made several bracelets for my friends and they absolutely loved them. Will definitely order again!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">SJ</div>
+                    <div class="author-info">
+                        <h4> Valerie Labi </h4>
+                        <p>Verified Customer</p>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="testimonial">
+                <p class="testimonial-text">"The customization tool is so easy to use. I created a unique bracelet for my sister's birthday and it arrived perfectly made just as I designed it."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">MK</div>
+                    <div class="author-info">
+                        <h4> George Boateng</h4>
+                        <p>Verified Customer</p>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="testimonial">
+                <p class="testimonial-text">"I've ordered from several bead shops online, but the variety and prices here are unbeatable. Plus, shipping was super fast!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">AD</div>
+                    <div class="author-info">
+                        <h4> Mrs. Ama Labi</h4>
+                        <p>Verified Customer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h3>Your Cart (3)</h3>
+            <button class="close-cart" id="closeCart">&times;</button>
+        </div>
+       
+        <div class="cart-items">
+            <!-- Cart Item 1 -->
+            <div class="cart-item">
+                <img src="https://images.unsplash.com/photo-1591369822091-8b8a2a6b8b0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Gemstone Bead Set" class="cart-item-img">
+                <div class="cart-item-details">
+                    <h4 class="cart-item-title">Gemstone Bead Collection</h4>
+                    <div class="cart-item-price">GHC524.99</div>
+                    <div class="cart-item-actions">
+                        <button class="quantity-btn">-</button>
+                        <input type="text" class="quantity-input" value="1">
+                        <button class="quantity-btn">+</button>
+                        <button class="remove-item"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+            </div>
+           
+            <!-- Cart Item 2 -->
+            <div class="cart-item">
+                <img src="https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Glass Bead Set" class="cart-item-img">
+                <div class="cart-item-details">
+                    <h4 class="cart-item-title">Glass Bead Assortment</h4>
+                    <div class="cart-item-price">GHC219.99</div>
+                    <div class="cart-item-actions">
+                        <button class="quantity-btn">-</button>
+                        <input type="text" class="quantity-input" value="1">
+                        <button class="quantity-btn">+</button>
+                        <button class="remove-item"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+            </div>
+           
+            <!-- Cart Item 3 -->
+            <div class="cart-item">
+                <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Custom Bracelet" class="cart-item-img">
+                <div class="cart-item-details">
+                    <h4 class="cart-item-title">Custom Blue Bracelet</h4>
+                    <div class="cart-item-price">GHC329.99</div>
+                    <div class="cart-item-actions">
+                        <button class="quantity-btn">-</button>
+                        <input type="text" class="quantity-input" value="1">
+                        <button class="quantity-btn">+</button>
+                        <button class="remove-item"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        <div class="cart-total">Total: GHC874.97</div>
+        <button class="checkout-btn">Proceed to Checkout</button>
+    </div>
+   
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Beads & Bracelets</h3>
+                <p>Creating beautiful, handmade jewellery since 2010. We specialize in high-quality beads and custom bracelet designs.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+           
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Shop All Products</a></li>
+                    <li><a href="#">Custom Bracelet Designer</a></li>
+                    <li><a href="#">Bulk Orders</a></li>
+                    <li><a href="#">Gift Cards</a></li>
+                </ul>
+            </div>
+           
+            <div class="footer-column">
+                <h3>Customer Service</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">Returns & Exchanges</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+           
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-map-marker-alt"></i> Oxford street , Osu</li>
+                    <li><i class="fas fa-phone"></i>(+233) 530200737</li>
+                    <li><i class="fas fa-envelope"></i> Hb@beadsbracelets.com</li>
+                    <li><i class="fas fa-clock"></i> Mon- Sat: 9AM-6PM </li>
+                </ul>
+            </div>
+        </div>
+       
+        <div class="copyright">
+            &copy; 2025 Beads & Bracelets. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Cart functionality
+        const cartButton = document.getElementById('cartButton');
+        const cartModal = document.getElementById('cartModal');
+        const closeCart = document.getElementById('closeCart');
+        const overlay = document.getElementById('overlay');
+       
+        cartButton.addEventListener('click', () => {
+            cartModal.classList.add('active');
+            overlay.classList.add('active');
+        });
+       
+        closeCart.addEventListener('click', () => {
+            cartModal.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+       
+        overlay.addEventListener('click', () => {
+            cartModal.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+       
+        // Add to cart buttons
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        const cartCount = document.querySelector('.cart-count');
+       
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                let count = parseInt(cartCount.textContent);
+                count++;
+                cartCount.textContent = count;
+               
+                // Show confirmation
+                button.innerHTML = '<i class="fas fa-check"></i> Added!';
+                button.disabled = true;
+               
+                setTimeout(() => {
+                    button.innerHTML = '<i class="fas fa-cart-plus"></i> Add to Cart';
+                    button.disabled = false;
+                }, 2000);
+            });
+        });
+       
+        // Customize options
+        const beadOptions = document.querySelectorAll('.bead-option');
+        const colorOptions = document.querySelectorAll('.color-option');
+        const sizeOptions = document.querySelectorAll('.size-option');
+       
+        beadOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                beadOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+            });
+        });
+       
+        colorOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                colorOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+            });
+        });
+       
+        sizeOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                sizeOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+            });
+        });
+       
+        // Custom bracelet add to cart
+        const customAddBtn = document.querySelector('.add-to-cart-custom');
+        customAddBtn.addEventListener('click', () => {
+            let count = parseInt(cartCount.textContent);
+            count++;
+            cartCount.textContent = count;
+           
+            // Show confirmation
+            customAddBtn.innerHTML = '<i class="fas fa-check"></i> Added to Cart!';
+            customAddBtn.disabled = true;
+           
+            setTimeout(() => {
+                customAddBtn.innerHTML = '<i class="fas fa-cart-plus"></i> Add Custom Bracelet to Cart - $29.99';
+                customAddBtn.disabled = false;
+            }, 2000);
+        });
+       
+        // Cart item quantity adjustment
+        const quantityBtns = document.querySelectorAll('.quantity-btn');
+        quantityBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const input = btn.parentElement.querySelector('.quantity-input');
+                let value = parseInt(input.value);
+               
+                if (btn.textContent === '+') {
+                    value++;
+                } else if (btn.textContent === '-' && value > 1) {
+                    value--;
+                }
+               
+                input.value = value;
+                updateCartTotal();
+            });
+        });
+       
+        // Remove item from cart
+        const removeButtons = document.querySelectorAll('.remove-item');
+        removeButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.closest('.cart-item');
+                item.remove();
+               
+                let count = parseInt(cartCount.textContent);
+                count--;
+                cartCount.textContent = count;
+               
+                updateCartTotal();
+            });
+        });
+       
+        // Update cart total
+        function updateCartTotal() {
+            const items = document.querySelectorAll('.cart-item');
+            let total = 0;
+           
+            items.forEach(item => {
+                const price = parseFloat(item.querySelector('.cart-item-price').textContent.replace('GHC', ''));
+                const quantity = parseInt(item.querySelector('.quantity-input').value);
+                total += price * quantity;
+            });
+           
+            document.querySelector('.cart-total').textContent = `Total: GHC{total.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+    
+</body>
+</html>
